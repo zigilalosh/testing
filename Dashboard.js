@@ -4,7 +4,10 @@ import { LineChart, Line, BarChart, Bar, PieChart, Pie, ComposedChart, Area, Cel
 
 const AmazonDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
-  
+
+try {
+
+
   // Dataset based on analyzed financial data
   const amazonData = {
     // Overall Amazon data by year (in billions USD)
@@ -422,5 +425,11 @@ const AmazonDashboard = () => {
     </div>
   );
 };
+
+} catch (error) {
+  console.error("Dashboard error:", error);
+  console.error("Error location:", error.stack);
+  document.getElementById('root').innerHTML = '<h1>Dashboard Error</h1><p>' + error + '</p>';
+}
 
 export default AmazonDashboard;
